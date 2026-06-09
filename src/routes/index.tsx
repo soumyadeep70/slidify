@@ -12,7 +12,7 @@ function Home() {
         Edit <code>src/routes/index.tsx</code> to get started.
       </p>
       <div className="flex items-center space-x-2">
-        <Switch id="switch"/>
+        <Switch id="switch" />
         <Label htmlFor="switch">Toggle it!</Label>
       </div>
     </div>
