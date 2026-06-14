@@ -1,5 +1,6 @@
 import {
   HeadContent,
+  Outlet,
   Scripts,
   createRootRouteWithContext,
 } from '@tanstack/react-router'
@@ -12,6 +13,7 @@ import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 import { Toaster } from '#/components/ui/sonner'
+import { ThemeProvider, useTheme } from '#/components/theme-provider'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -38,8 +40,26 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
+  component: RootComponent,
   shellComponent: RootDocument,
 })
+
+function RootComponent() {
+  const { theme } = useTheme()
+
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <HeadContent />
+      </head>
+      <body className="font-sans antialiased bg-background text-foreground selection:bg-primary/20">
+        <Outlet />
+        <Toaster closeButton position="top-center" richColors theme={theme} />
+        <Scripts />
+      </body>
+    </html>
+  )
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
@@ -48,8 +68,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {children}
-        <Toaster />
+        <ThemeProvider storageKey="theme">{children}</ThemeProvider>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
