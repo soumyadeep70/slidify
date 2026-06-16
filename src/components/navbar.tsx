@@ -41,8 +41,8 @@ export function Navbar() {
   const router = useRouter()
   const { user } = getRouteApi('/_protected').useRouteContext()
   const { theme, setTheme } = useTheme()
-  const [sticky, setSticky] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+  const [ sticky, setSticky ] = useState(false)
+  const [ isOpen, setIsOpen ] = useState(false)
 
   const handleScroll = useCallback(() => {
     setSticky(window.scrollY >= 60)

@@ -67,9 +67,7 @@ export default function LoginPage({ redirectTo }: { redirectTo?: string }) {
               fill="currentColor"
             />
           </svg>
-          {isSubmitting === 'github'
-            ? 'Redirecting...'
-            : 'Continue with GitHub'}
+          {isSubmitting === 'github' ? 'Redirecting...' : 'Continue with GitHub'}
         </Button>
 
         <Button

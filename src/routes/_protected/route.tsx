@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <main className="pt-24 pb-12 px-4">
+      <main className="pt-24">
         <Outlet />
       </main>
     </div>
